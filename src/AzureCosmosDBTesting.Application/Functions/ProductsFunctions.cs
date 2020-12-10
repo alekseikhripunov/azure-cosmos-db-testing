@@ -10,19 +10,17 @@ namespace AzureCosmosDBTesting.Application.Functions
 {
     public class ProductsFunctions
     {
-        private readonly IMongoClient _mongoClient;
-        private readonly IMongoDatabaseFactory _mongoDatabaseFactory;
+        private readonly MongoDatabaseContext _mongoDatabaseContext;
 
-        public ProductsFunctions(IMongoClient mongoClient, IMongoDatabaseFactory mongoDatabaseFactory)
+        public ProductsFunctions(MongoDatabaseContext mongoDatabaseContext)
         {
-            _mongoClient = mongoClient;
-            _mongoDatabaseFactory = mongoDatabaseFactory;
+            _mongoDatabaseContext = mongoDatabaseContext;
         }
 
-        [FunctionName("GetAllProducts")]
-        public async Task GetAllProductsAsync([HttpTrigger("get", Route = "products/all")] HttpRequest request)
+        [FunctionName("CreateProduct")]
+        public async Task CreateProductAsync([HttpTrigger("post", Route = "products")] HttpRequest request)
         {
-            IMongoCollection<Product> collection = _mongoDatabaseFactory.GetCollection<Product>("Products");
+            IMongoCollection<Product> products = _mongoDatabaseContext.Products;
 
             Product product = new Product
             {
@@ -31,7 +29,7 @@ namespace AzureCosmosDBTesting.Application.Functions
                 Category = "Mobile Devices",
                 Price = 250
             };
-            await collection.InsertOneAsync(product);
+            await products.InsertOneAsync(product);
         }
     }
 }

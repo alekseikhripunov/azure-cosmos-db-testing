@@ -1,10 +1,10 @@
-﻿namespace AzureCosmosDBTesting.Application
+﻿namespace AzureCosmosDBTesting.Application.DataAccess
 {
     public class DatabaseOptions
     {
         public const string Section = "Database";
 
-        public string ConnetionString { get; set; }
+        public string ConnectionString { get; set; }
 
         public string DatabaseName { get; set; }
     }
