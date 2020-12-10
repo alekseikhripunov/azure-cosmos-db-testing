@@ -1,4 +1,5 @@
 ﻿using AzureCosmosDBTesting.Application;
+using AzureCosmosDBTesting.Application.DataAccess;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,9 +13,17 @@ namespace AzureCosmosDBTesting.Application
     {
         public override void Configure(IFunctionsHostBuilder builder)
         {
+            builder.Services
+                .AddOptions<DatabaseOptions>()
+                .Configure<IConfiguration>((o, c) =>
+                {
+                    c.GetSection(DatabaseOptions.Section).Bind(o);
+                });
+
+            builder.Services.AddSingleton<IMongoDatabaseFactory, MongoDatabaseFactory>();
             builder.Services.AddSingleton<IMongoClient, MongoClient>(p =>
             {
-                var configuration = p.GetRequiredService<IConfiguration>();
+                IConfiguration configuration = p.GetRequiredService<IConfiguration>();
 
                 return new MongoClient(configuration["Database:ConnectionString"]);
             });
