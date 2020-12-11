@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureCosmosDBTesting.Application", "src\AzureCosmosDBTesting.Application\AzureCosmosDBTesting.Application.csproj", "{BB90A6CE-ADC9-450D-861F-6542132890CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureCosmosDBTesting.IntegrationTests", "src\AzureCosmosDBTesting.IntegrationTests\AzureCosmosDBTesting.IntegrationTests\AzureCosmosDBTesting.IntegrationTests.csproj", "{6A3EBF17-EBDE-4842-8D03-A4CD143C55CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureCosmosDBTesting.IntegrationTests", "src\AzureCosmosDBTesting.IntegrationTests\AzureCosmosDBTesting.IntegrationTests\AzureCosmosDBTesting.IntegrationTests.csproj", "{6A3EBF17-EBDE-4842-8D03-A4CD143C55CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureCosmosDBTesting.UnitTests", "src\AzureCosmosDBTesting.UnitTests\AzureCosmosDBTesting.UnitTests.csproj", "{02FA6931-70C5-4EF6-8820-5C3E9058EFB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{6A3EBF17-EBDE-4842-8D03-A4CD143C55CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A3EBF17-EBDE-4842-8D03-A4CD143C55CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A3EBF17-EBDE-4842-8D03-A4CD143C55CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02FA6931-70C5-4EF6-8820-5C3E9058EFB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02FA6931-70C5-4EF6-8820-5C3E9058EFB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02FA6931-70C5-4EF6-8820-5C3E9058EFB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02FA6931-70C5-4EF6-8820-5C3E9058EFB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

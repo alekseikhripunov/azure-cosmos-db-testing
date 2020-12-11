@@ -1,30 +1,28 @@
 ﻿using AzureCosmosDBTesting.Application.DataAccess;
 using AzureCosmosDBTesting.Application.Functions;
 using AzureCosmosDBTesting.Application.Models;
-using AzureCosmosDBTesting.IntegrationTests.Infrastructure;
 using AzureCosmosDBTesting.UnitTests.Infrastructure;
-using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using System;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace AzureCosmosDBTesting.IntegrationTests.Functions
+namespace AzureCosmosDBTesting.UnitTests.Functions
 {
-    public class ProductsFunctionsTests : IClassFixture<IntegrationFixture>
+    public class ProductsFunctionsTests
     {
         private readonly ProductsFunctions _functions;
 
-        public ProductsFunctionsTests(IntegrationFixture fixture)
+        public ProductsFunctionsTests()
         {
-            MongoDatabaseContext context = fixture.Services.GetRequiredService<MongoDatabaseContext>();
+            MongoDatabaseContext context = MongoDatabase.GetMongoDatabaseContext();
             _functions = new ProductsFunctions(context);
         }
 
         [Fact]
         public async Task CreateProductAsync_ProductCreated()
         {
-            //Assert
+            //Arrange
             await MongoDatabase.RecreateAsync();
 
             //Act
@@ -34,7 +32,7 @@ namespace AzureCosmosDBTesting.IntegrationTests.Functions
             MongoDatabaseContext context = MongoDatabase.GetMongoDatabaseContext();
             Product product = await context.Products.AsQueryable().SingleAsync();
 
-            Assert.NotEqual(Guid.Empty, product.Id);
+            Assert.NotEqual(Guid.NewGuid(), product.Id);
             Assert.Equal("Surface Headphones", product.Name);
             Assert.Equal("Mobile Devices", product.Category);
             Assert.Equal(250, product.Price);

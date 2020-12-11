@@ -1,4 +1,5 @@
 ﻿using AzureCosmosDBTesting.Application;
+using AzureCosmosDBTesting.UnitTests.Infrastructure;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging.Abstractions;
